@@ -1,0 +1,82 @@
+[
+  {
+    "name": "CAT",
+    "id": "CAT",
+    "img_url": "CATMovie.jpg",
+    "rating": "8.5",
+    "description": "A night delivery rider uncovers a hidden conspiracy while transporting mysterious packages across the city.",
+    "cast": ["Park Seo Joon", "Kim Ji Won", "Lee Joon Hyuk"],
+    "genre": ["Action", "Thriller"],
+    "watch_url": "https://www.netflix.com/watch/81281065?trackId=14170287"
+  },
+  {
+    "name": "Good Doctor",
+    "id": "good-doctor",
+    "img_url": "goodDoctor.jpg",
+    "rating": "9.0",
+    "description": "A scientist begins hearing voices from the future, warning her about an impending global disaster.",
+    "cast": ["Seo Ye Ji", "Ji Sung", "Kim Sung Kyun"],
+    "genre": ["Sci-Fi", "Drama"],
+    "watch_url": "https://www.netflix.com/watch/81450895?trackId=14170286"
+  },
+  {
+    "name": "Kohra",
+    "id": "kohra",
+    "img_url": "kohra.jpg",
+    "rating": "8.2",
+    "description": "A cozy café becomes the meeting point for strangers whose lives become deeply intertwined.",
+    "cast": ["IU", "Nam Joo Hyuk", "Kim Seon Ho"],
+    "genre": ["Romance", "Slice of Life"],
+    "watch_url": "https://www.netflix.com/watch/81443395?trackId=262412350"
+  },
+  {
+    "name": "Detective",
+    "id": "detective",
+    "img_url": "detective2.jpg",
+    "rating": "8.8",
+    "description": "A retired detective receives anonymous clues that pull him back into solving a decades-old cold case.",
+    "cast": ["Lee Byung Hun", "Bae Doona", "Ryu Jun Yeol"],
+    "genre": ["Crime", "Mystery"],
+    "watch_url": "https://www.netflix.com/watch/82681007?trackId=14277281"
+  },
+  {
+    "name": "CAT",
+    "id": "CAT",
+    "img_url": "CATMovie.jpg",
+    "rating": "8.5",
+    "description": "A night delivery rider uncovers a hidden conspiracy while transporting mysterious packages across the city.",
+    "cast": ["Park Seo Joon", "Kim Ji Won", "Lee Joon Hyuk"],
+    "genre": ["Action", "Thriller"],
+    "watch_url": "https://www.netflix.com/watch/81281065?trackId=14170287"
+  },
+  {
+    "name": "Good Doctor",
+    "id": "good-doctor",
+    "img_url": "goodDoctor.jpg",
+    "rating": "9.0",
+    "description": "A scientist begins hearing voices from the future, warning her about an impending global disaster.",
+    "cast": ["Seo Ye Ji", "Ji Sung", "Kim Sung Kyun"],
+    "genre": ["Sci-Fi", "Drama"],
+    "watch_url": "https://www.netflix.com/watch/81450895?trackId=14170286"
+  },
+  {
+    "name": "Kohra",
+    "id": "kohra",
+    "img_url": "kohra.jpg",
+    "rating": "8.2",
+    "description": "A cozy café becomes the meeting point for strangers whose lives become deeply intertwined.",
+    "cast": ["IU", "Nam Joo Hyuk", "Kim Seon Ho"],
+    "genre": ["Romance", "Slice of Life"],
+    "watch_url": "https://www.netflix.com/watch/81443395?trackId=262412350"
+  },
+  {
+    "name": "Detective",
+    "id": "detective",
+    "img_url": "detective2.jpg",
+    "rating": "8.8",
+    "description": "A retired detective receives anonymous clues that pull him back into solving a decades-old cold case.",
+    "cast": ["Lee Byung Hun", "Bae Doona", "Ryu Jun Yeol"],
+    "genre": ["Crime", "Mystery"],
+    "watch_url": "https://www.netflix.com/watch/82681007?trackId=14277281"
+  }
+]

@@ -1,0 +1,16 @@
+
+/* global css styling defining here */
+.grid {
+  display: grid;
+  gap: 9.6rem;
+}
+
+/* 2 columns
+each takes 1 fraction of available space. */
+.grid-two-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-three-cols {
+  grid-template-columns: repeat(3, 1fr);
+}

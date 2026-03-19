@@ -1,0 +1,147 @@
+/* ===== PAGE ===== */
+
+body {
+  margin: 0;
+  background: linear-gradient(100deg, #001214, #001f29);
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.todo-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+}
+
+/* ===== HEADER ===== */
+
+.header h1 {
+  font-size: 4rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ===== INPUT + BUTTON (ATTACHED) ===== */
+
+/* Without flex:
+❌ elements stack vertically
+With flex:
+✅ elements sit side by side */
+.todo-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+/* INPUT */
+
+.todo-input {
+  width: 420px;
+  padding: 16px 20px;
+/* [top-left] [top-right] [bottom-right] [bottom-left];. */
+  border-radius: 40px 0 0 40px;
+  border: none;
+  outline: none;
+  background: #dcdcdc;
+  font-size: 16px;
+  color: black;
+}
+
+/* BUTTON */
+
+.todo-form button {
+  padding: 0 26px;
+  border-radius: 0 40px 40px 0;
+  border: none;
+  background: #5dade2;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== LIST ===== */
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== TODO ITEM (SMALL ROUNDED WHITE BOX) ===== */
+
+.todo-item {
+  background: #e6e6e6;
+  color: #1c2833;
+  margin: 14px 0;
+  padding: 18px 24px;
+  border-radius: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* ===== TASK TEXT ===== */
+
+.todo-item span {
+  flex: 1;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* ===== ROUND ICON BUTTONS ===== */
+
+.check-btn,
+.delete-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* GREEN CHECK */
+
+.check-btn {
+  background: #33c16c;
+  color: white;
+  margin-right: 20px;
+}
+
+/* RED DELETE */
+
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+/* ICON SIZE */
+
+.check-btn svg,
+.delete-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* COMPLETED TASK */
+
+.checkList {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
