@@ -1,0 +1,120 @@
+.footer {
+  background-color: #1e1e1e;
+  color: #ccc;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 13px;
+  width: 100%;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 40px 60px;
+  border-bottom: 1px solid #333;
+}
+
+.footer-brand {
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.footer-tagline {
+  color: #aaa;
+  line-height: 1.6;
+  font-size: 12px;
+}
+
+.footer-payments {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pay-badge {
+  background: #333;
+  color: #ccc;
+  padding: 3px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 130px;
+}
+
+.footer-heading {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.footer-link {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #fff;
+}
+
+.footer-newsletter-text {
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.footer-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  color: #ccc;
+  font-size: 12px;
+  flex: 1;
+}
+
+.footer-btn {
+  background: #444;
+  border: none;
+  color: #fff;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 14px;
+  background-color: #181818;
+  color: #666;
+  font-size: 12px;
+}

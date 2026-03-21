@@ -1,0 +1,54 @@
+/* Header.css */
+
+.header {
+  background-color: #0f172a;
+  color: white;
+  padding: 10px 20px;
+}
+.active {
+  color: #fff;
+  font-weight: 700;
+  border-bottom: 2px solid #fff;
+}
+
+/* TOP BAR */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-auth {
+  display: flex;
+  gap: 15px; /* spacing between SIGN IN / SIGN UP */
+}
+
+.auth-link {
+  color: white;
+  text-decoration: none;
+}
+
+/* BOTTOM BAR */
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.header-logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px; /* spacing between nav links */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
