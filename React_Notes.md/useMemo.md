@@ -148,7 +148,147 @@ const obj = { name: "Shruty" };
 
 ---
 
-If you want, I can show:
 
-* 🔥 `useCallback` + `React.memo` (MOST important combo)
-* OR a real bug where memoization **doesn’t work as expected**
+how can I change the object thats stored in useMemo
+
+Good question — and this is where many people misunderstand `useMemo` 👇
+
+---
+
+# 🧠 First: Important Truth
+
+> ❗ You **don’t directly change** a value stored in `useMemo`
+
+👉 `useMemo` is **read-only caching**, not state
+
+---
+
+# 🔴 Why you can't “change it”
+
+```javascript
+const obj = useMemo(() => ({ name: "Shruty" }), []);
+```
+
+👉 This value:
+
+* is created once
+* reused forever (because `[]`)
+
+👉 There is **no setter like `setObj`**
+
+---
+
+# ✅ How you actually “change” it
+
+👉 You change the **dependencies**, not the value directly
+
+---
+
+# 🔥 Correct Pattern
+
+```javascript
+const [name, setName] = useState("Shruty");
+
+const obj = useMemo(() => {
+  return { name };
+}, [name]); // 👈 dependency
+```
+
+---
+
+## 🔍 Now what happens
+
+### Initial:
+
+```javascript
+name = "Shruty"
+obj = { name: "Shruty" }
+```
+
+---
+
+### After update:
+
+```javascript
+setName("Rahul");
+```
+
+👉 `name` changes
+👉 `useMemo` runs again
+👉 New object created:
+
+```javascript
+obj = { name: "Rahul" }
+```
+
+---
+
+# 🧠 Key Idea
+
+> You don’t update `useMemo`
+> You update its **dependencies**
+
+---
+
+# ❌ Wrong approach (mutation)
+
+```javascript
+obj.name = "Rahul"; // ❌ DON'T DO THIS
+```
+
+Why bad:
+
+* Breaks React principles
+* Won’t trigger re-render properly
+* Can cause bugs
+
+---
+
+# ✅ If you need to update manually → useState
+
+```javascript
+const [obj, setObj] = useState({ name: "Shruty" });
+
+setObj({ name: "Rahul" });
+```
+
+---
+
+# 🔥 When to use what
+
+| Situation                       | Use        |
+| ------------------------------- | ---------- |
+| Want to store & update value    | `useState` |
+| Want to derive value from state | `useMemo`  |
+
+---
+
+# 🧠 Mental Model
+
+* `useState` → **source of truth**
+* `useMemo` → **derived / cached value**
+
+---
+
+# ⚡ Real-world example
+
+```javascript
+const [products, setProducts] = useState([]);
+
+const filteredProducts = useMemo(() => {
+  return products.filter(p => p.price > 100);
+}, [products]);
+```
+
+👉 You update `products`
+👉 `filteredProducts` updates automatically
+
+---
+
+# ⚡ Interview One-liner
+
+> “Values from `useMemo` are not directly mutable; they are recomputed when dependencies change.”
+
+---
+
+
