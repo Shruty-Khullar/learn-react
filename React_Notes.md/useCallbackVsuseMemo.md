@@ -179,7 +179,3 @@ useMemo(() => () => console.log("hi"), []); // ❌ confusing
 
 ---
 
-If you want, I can give:
-
-* 🔥 a tricky bug where **even after using these, re-render still happens**
-* OR a **visual flow diagram (super helpful for interviews)**

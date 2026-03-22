@@ -1,8 +1,10 @@
-import { NavLink, useRouteError } from "react-router-dom"
+import { NavLink, useNavigate, useRouteError } from "react-router-dom"
 
 export const ErrorPage = () => {
     const err = useRouteError();
     console.log(err)
+    //returns fn -> navigate(to, options...) -> navigate(1) -> movws
+    const navigate = useNavigate();
     if(err.status === 404)
         return (
             <section className="error-section">
@@ -15,8 +17,12 @@ export const ErrorPage = () => {
                 </figure>
                 <div className="text-center">
                 <p className="p-a">. The page you were looking for could not be found</p>
-                <NavLink to='/'>Back to Home page</NavLink>
+                {/* This will always takes us back to Home page */}
+                {/* <NavLink to='/'>Back to Home page</NavLink> */}
                 </div>
+                <button onClick={()=>navigate(-1)}>
+                    Go back
+                </button>
             </div>
             </section>
         )
