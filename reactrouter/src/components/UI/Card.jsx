@@ -10,8 +10,23 @@ export const Card = ({currMovie}) => {
                     </div>
                     <div className="ticket-container">
                     <div className="ticket__content">
+                        {/* Navlink return react element
+                        {
+                            type: NavLink,
+                            props: {
+                                to: `/movie/${imdbID}`,
+                                children: {
+                                type: "button",
+                                props: {
+                                    className: "ticket__buy-btn",
+                                    children: "Watch now"
+                                }
+                                }
+                            }
+                            }
+                        */}
                         <NavLink to={`/movie/${imdbID}`}>
-                        <button className="ticket__buy-btn">Watch now</button>
+                            <button className="ticket__buy-btn">Watch now</button>
                         </NavLink>
                     </div>
                     </div>
