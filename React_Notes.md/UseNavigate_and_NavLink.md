@@ -44,7 +44,7 @@ navigate(1);  // go forward
 
 # 🔹 `NavLink` (Navigation UI Component)
 
-👉 It’s a **component** used to create navigation links (like menus).
+👉 It’s a **component** used to create navigation links (like menus). Used to create clickable links in UI (like menu/navbar)
 
 ### ✅ Use cases:
 

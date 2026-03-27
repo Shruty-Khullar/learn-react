@@ -1,0 +1,443 @@
+**Axios** is a popular JavaScript library used to make HTTP requests (like GET, POST, PUT, DELETE) from the browser or Node.js. It’s widely used as a cleaner, more powerful alternative to the native `fetch` API.
+
+---
+
+## 🚀 What is Axios?
+
+👉 Axios is a **promise-based HTTP client** that helps you communicate with APIs easily.
+
+---
+
+## ✨ Why use Axios instead of `fetch`?
+
+* Automatically transforms JSON data
+* Better error handling
+* Supports request/response interceptors
+* Can cancel requests
+* Works in both browser & Node.js
+
+---
+
+## 📦 Installation
+
+```bash
+npm install axios
+```
+
+or
+
+```bash
+yarn add axios
+```
+
+---
+
+## 🔧 Basic Usage
+
+### 1. GET request
+
+```js
+import axios from "axios";
+
+axios.get("https://api.example.com/users")
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+```
+
+---
+
+### 2. POST request
+
+```js
+axios.post("https://api.example.com/users", {
+  name: "Shruty",
+  age: 24
+})
+.then(res => console.log(res.data))
+.catch(err => console.error(err));
+```
+
+---
+
+## ⚡ Using async/await (cleaner)
+
+```js
+const fetchUsers = async () => {
+  try {
+    const response = await axios.get("https://api.example.com/users");
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+```
+
+---
+
+## 📊 Axios Response Structure
+
+```js
+{
+  data: {},        // actual response body
+  status: 200,     // HTTP status code
+  statusText: "OK",
+  headers: {},
+  config: {}
+}
+```
+
+---
+
+## 🧠 Interceptors (very useful in big apps)
+
+```js
+axios.interceptors.request.use(config => {
+  console.log("Request sent!");
+  return config;
+});
+
+axios.interceptors.response.use(response => {
+  return response;
+}, error => {
+  console.error("Error occurred");
+  return Promise.reject(error);
+});
+```
+
+👉 Useful for:
+
+* Adding auth tokens
+* Global error handling
+* Logging
+
+---
+
+## 🛠️ Creating a reusable Axios instance
+
+```js
+const api = axios.create({
+  baseURL: "https://api.example.com",
+  timeout: 5000,
+});
+
+api.get("/users");
+```
+
+---
+
+## 🔥 When should you use Axios?
+
+Use Axios when:
+
+* You want cleaner API calls
+* You need consistent error handling across app
+* You’re working with React / frontend apps
+* You want interceptors (important in large apps)
+
+---
+
+Good question — this is exactly where people get confused.
+
+---
+
+## 🌐 What is `fetch`?
+
+👉 Fetch API is a **built-in browser API** used to make HTTP requests.
+
+So unlike Axios:
+
+* ❌ You don’t install it
+* ✅ It comes **natively with browsers (and modern Node.js)**
+
+---
+
+## ⚙️ Key Idea
+
+* **Axios** → External library (more features, easier)
+* **Fetch** → Native API (more control, but more manual work)
+
+---
+
+## 🔧 Basic Example
+
+### Using `fetch`
+
+```js
+fetch("https://api.example.com/users")
+  .then(response => response.json()) // 👈 manual conversion
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+---
+
+### Same thing in Axios
+
+```js
+axios.get("https://api.example.com/users")
+  .then(response => console.log(response.data)); // 👈 already parsed
+```
+
+---
+
+## 🔍 Key Differences
+
+### 1. JSON handling
+
+* **fetch** → You must manually call `.json()`
+* **axios** → Automatically parses JSON
+
+---
+
+### 2. Error handling
+
+* **fetch**
+
+  ```js
+  fetch(url)
+    .then(res => {
+      if (!res.ok) throw new Error("Error!");
+      return res.json();
+    });
+  ```
+
+  👉 Fetch does NOT throw errors for HTTP status (like 404, 500)
+
+* **axios**
+
+  ```js
+  axios.get(url).catch(err => console.log(err));
+  ```
+
+  👉 Automatically throws for bad status codes
+
+---
+
+### 3. Syntax simplicity
+
+* **fetch** → More boilerplate
+* **axios** → Cleaner and shorter
+
+---
+
+### 4. Features
+
+| Feature           | fetch                | axios |
+| ----------------- | -------------------- | ----- |
+| Built-in          | ✅                    | ❌     |
+| JSON auto parse   | ❌                    | ✅     |
+| Interceptors      | ❌                    | ✅     |
+| Timeout           | ❌ (manual)           | ✅     |
+| Request cancel    | ⚠️ (AbortController) | ✅     |
+| Progress tracking | ❌                    | ✅     |
+
+---
+
+## 🧠 Simple Analogy
+
+* **fetch** → Raw tools (like cooking from scratch 🍳)
+* **axios** → Ready-to-use toolkit (like a meal kit 🍱)
+
+---
+
+## 🧩 When to use what?
+
+👉 Use **fetch** when:
+
+* You want no external dependency
+* App is small/simple
+
+👉 Use **Axios** when:
+
+* Large project (like yours 👀)
+* Need consistency (like your PR comment about common hook)
+* Want interceptors, retries, better error handling
+
+---
+
+## ⚡ One-liner takeaway
+
+👉 **Fetch is the built-in way to make HTTP requests. Axios is a more powerful, developer-friendly wrapper around that idea.**
+
+---
+
+fetch is an API and not a fn?
+Short answer: **`fetch` is both part of an API *and* a function.**
+
+---
+
+## 🧠 The correct way to think about it
+
+👉 Fetch API is a **browser-provided API (a collection of features)**
+👉 Inside that API, there is a **function called `fetch()`**
+
+---
+
+## 📦 Breakdown
+
+### 1. Fetch API (the whole system)
+
+The **API** includes multiple things:
+
+* `fetch()` → the function you call
+* `Request` → represents a request
+* `Response` → represents a response
+* `Headers` → for managing headers
+
+So when people say:
+
+> “fetch is an API”
+
+They mean the **entire system**, not just the function.
+
+---
+
+### 2. `fetch()` (the function you use)
+
+```js
+fetch("https://api.example.com")
+```
+
+👉 This is a **function**
+👉 It returns a **Promise**
+
+---
+
+## ⚡ Why the confusion happens
+
+Because in daily usage:
+
+* People say “use fetch”
+* But they actually mean “use the `fetch()` function”
+
+---
+
+## 🧠 Simple analogy
+
+Think of it like:
+
+* **Fetch API** = a toolbox 🧰
+* **fetch()** = one tool (a wrench 🔧) inside it
+
+---
+
+## ✅ Final clarity
+
+✔️ `fetch` (lowercase in code) → **a function**
+✔️ Fetch API → **a collection of related web features**
+
+---
+
+If you want, I can go one level deeper and explain:
+
+* Why `fetch()` returns a promise
+* Or how it works internally (event loop + network layer)
+
+--------
+HTTP Protocol 
+
+## 🌐 What does “HTTP-based” mean?
+
+👉 **HTTP-based** means **communication happens using HTTP protocol**
+
+---
+
+## 🧠 First, what is HTTP?
+
+👉 HTTP is the **standard set of rules used to transfer data over the web**
+
+---
+
+## ⚡ So “HTTP-based” = ?
+
+👉 A system, API, or communication is called **HTTP-based** when:
+
+* It sends requests using HTTP
+* It receives responses using HTTP
+
+---
+
+## 🔧 Example
+
+When you write:
+
+```js
+fetch("https://api.example.com/users")
+```
+
+👉 This is an **HTTP-based request**
+
+Behind the scenes:
+
+* Request → `GET /users`
+* Response → JSON data
+
+---
+
+## 📦 Common HTTP Methods
+
+These define **what action you want to perform**:
+
+* **GET** → Fetch data
+* **POST** → Send/create data
+* **PUT/PATCH** → Update data
+* **DELETE** → Remove data
+
+---
+
+## 🧠 Real-world analogy
+
+HTTP-based communication is like:
+
+📩 Sending a **letter with a standard format**
+
+* Address (URL)
+* Type of request (GET/POST)
+* Message (body)
+
+The receiver understands it because both follow **same rules (HTTP)**
+
+---
+
+## 🔗 Where you hear “HTTP-based”
+
+### 1. APIs
+
+👉 Most APIs (like REST APIs) are HTTP-based
+
+Example:
+
+* GitHub API
+
+---
+
+### 2. Tools like Axios / fetch
+
+👉 Both send **HTTP-based requests**
+
+---
+
+### 3. Web apps
+
+👉 Browser ↔ Server communication is HTTP-based
+
+---
+
+## ⚡ One-line definition
+
+👉 **HTTP-based = using HTTP protocol to send and receive data over the web**
+
+---
+
+## 🔥 Quick connection (important)
+
+* **API** → defines rules
+* **HTTP** → how data travels
+* **fetch / Axios** → tools to send HTTP requests
+
+---
+
