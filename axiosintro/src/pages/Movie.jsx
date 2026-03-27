@@ -12,14 +12,18 @@ export const Movie = () => {
             console.log(res);
             setData(res.data.Search);
         } catch(err){
-            console.log(err)
+            console.log('Error Message', err.message);
+            console.log('Error Status', err.response.status);
+            console.log('Error Data', err.response.data)
         }
     }
     //always load data on refreshing
-    useEffect(() => {getMovieData()},[])
+    useEffect(() => {
+        getMovieData()
+    },[])
     // In JSX: Inside {} → React expects an expression that returns something renderable; console.log() → returns undefined
     return (
-        <ul>
+        <ul className=''>
             {
                 data.map((currElem) => {
                     return <Card key={currElem.imdbID} movieData={currElem}/>
