@@ -441,3 +441,133 @@ Example:
 
 ---
 
+import axios from 'axios';
+const api = axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com/posts',
+});
+
+export const getPost = () => {
+    //resp will be a promise as get returns a promise, so either we need to use .then or async await to process promises
+    const resp = axios.get('/posts');
+    console.log(resp)
+}
+
+
+resp is a promise right now which is fuilfiled. and it was told that axios dont need data.json() to parse data, so even when promise is fulfiled why isnt it returning the data and returning pro mise instead
+Good question — this confusion is very common when starting with Axios + promises.
+
+### 🔴 What’s happening in your code
+
+```js
+const resp = axios.get('/posts');
+console.log(resp);
+```
+
+👉 `axios.get()` **ALWAYS returns a Promise**, not the actual data.
+
+Even if the request is already fulfilled, JavaScript **does NOT unwrap the value automatically**.
+
+So `resp` is:
+
+```js
+Promise { <fulfilled>: { data: [...], status: 200, ... } }
+```
+
+---
+
+### 🧠 Key Concept (important)
+
+* A **Promise is a wrapper** around a future value
+* JS will **never automatically give you the resolved value**
+* You must explicitly extract it using:
+
+  * `.then()`
+  * `await`
+
+---
+
+### ❗ Why Axios "doesn't need data.json()"
+
+You're right — Axios already parses JSON for you.
+
+BUT:
+
+| Step         | Fetch               | Axios           |
+| ------------ | ------------------- | --------------- |
+| Get response | Promise             | Promise         |
+| Parse JSON   | `res.json()` needed | ✅ Already done  |
+| Access data  | after parsing       | `response.data` |
+
+👉 Axios removes **JSON parsing step**, NOT the **Promise step**
+
+---
+
+### ✅ Correct ways to get data
+
+#### ✔️ Option 1: Using `.then()`
+
+```js
+export const getPost = () => {
+    axios.get('/posts')
+        .then((resp) => {
+            console.log(resp.data); // ✅ actual data
+        });
+};
+```
+
+---
+
+#### ✔️ Option 2: Using `async/await` (recommended)
+
+```js
+export const getPost = async () => {
+    const resp = await axios.get('/posts');
+    console.log(resp.data); // ✅ actual data
+};
+```
+
+---
+
+### ⚠️ Also a mistake in your code
+
+You created an instance:
+
+```js
+const api = axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com/posts',
+});
+```
+
+But you're not using it ❌
+
+Instead you're calling:
+
+```js
+axios.get('/posts'); // ❌ wrong base URL usage
+```
+
+---
+
+### ✅ Correct usage with instance
+
+```js
+export const getPost = async () => {
+    const resp = await api.get('/'); // or '' 
+    console.log(resp.data);
+};
+```
+
+---
+
+### 💡 Simple analogy
+
+Think of a Promise like:
+
+> 📦 “Your food is ordered — it's coming”
+
+Even if it's already delivered:
+
+* You still need to **open the box (`await` / `.then`)**
+* Otherwise you’re just holding the box (Promise)
+
+-------------
