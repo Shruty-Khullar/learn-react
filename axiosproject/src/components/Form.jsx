@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { postData } from "../api/PostApi";
+import { postData, putData } from "../api/PostApi";
 
 export const Form = ({data, setData, updatedData, setUpdatedData}) => {
     const [formData, setFormData] = useState({
@@ -25,17 +25,43 @@ export const Form = ({data, setData, updatedData, setUpdatedData}) => {
             }
        })
     }
-    const handleFormSubmit = async (e) => {
-        e.preventDefault()
-        const res = await postData(formData);
+    const addPostData = async () => {
+        const res = await postData(formData);   
         console.log(res);
         if(res.status === 201){
             setData((prevData)=> [...prevData, res.data]);
             setFormData({body: '', title: ''})
+             //setData([...data, res.data])
         } 
-        //setData([...data, res.data])
+    }
+    const updatePostData = async () => {
+        try {
+            const res = await putData(updatedData.id, formData)
+            console.log(res)
+            if(res.status === 200) {
+                setData((prev) => {
+                    return prev.map((currElem) => currElem.id === res.data.id ? res.data : currElem)
+                })
+            }
+            setFormData({title: '', body: ''});
+            setUpdatedData({});
+        } catch(err) {  
+            console.log(err);
+        }
     }
 
+    const handleFormSubmit = (e) => {
+        e.preventDefault()
+        //It gives value of form button
+        const action = e.nativeEvent.submitter.value;
+        if(action === "Add") {
+            addPostData()
+        } else if(action==="Edit") {
+            updatePostData();
+        }  
+    }
+    
+    let isUpdatedDataEmpty = Object.keys(updatedData).length === 0
     useEffect(()=> {
         updatedData && setFormData({
             title: updatedData.title || "",
@@ -70,8 +96,8 @@ export const Form = ({data, setData, updatedData, setUpdatedData}) => {
                     onChange={updateFormData}
                 />
             </div>
-            <button type="submit">
-                Add
+            <button type="submit" value={isUpdatedDataEmpty ? "Add" : "Edit"}>
+                {isUpdatedDataEmpty ? "Add" : "Edit"}
             </button>
        </form>
     )
