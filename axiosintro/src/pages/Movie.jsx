@@ -12,7 +12,7 @@ export const Movie = () => {
             // const res = await axios.get(API);
 
             const res = await getMovie();
-            console.log(res);
+            console.log(res);  
             setData(res.data.Search);
         } catch(err){
             console.log('Error Message', err.message);
